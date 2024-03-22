@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .item-list {
+    @apply my-2 p-3 bg-teal-300  text-slate-700  rounded-md text-lg font-normal;
+  }
+}
