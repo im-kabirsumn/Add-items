@@ -3,7 +3,22 @@
 @tailwind utilities;
 
 @layer components {
+  .input-items {
+    @apply w-[100%] p-3 outline-none rounded-md text-slate-600 text-xl font-semibold focus:caret-cyan-600 focus:text-slate-600;
+  }
   .item-list {
-    @apply my-2 p-3 bg-teal-300  text-slate-700  rounded-md text-lg font-normal;
+    @apply my-2 py-3 px-4 bg-teal-300 w-[400px] text-slate-700 text-pretty rounded-md text-lg font-normal relative;
+  }
+  .item-list li {
+    @apply break-all;
+  }
+  .delete {
+    @apply w-5 inline-block absolute right-1 top-[6px] border border-teal-300 rounded-full duration-200;
+  }
+  .delete:hover {
+    @apply bg-teal-500  border-teal-500 cursor-pointer;
+  }
+  .strike {
+    @apply line-through;
   }
 }

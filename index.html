@@ -22,7 +22,7 @@
           id="input-items"
           name="input-items"
           placeholder="Input Items..."
-          class="w-[100%] p-3 outline-none rounded-md text-slate-600 text-xl font-semibold focus:caret-cyan-600"
+          class="input-items"
         />
         <button
           type="submit"
@@ -31,11 +31,29 @@
           Add
         </button>
       </form>
-      <ul id="items">
-        <div class="item-list">
-          <li>Added items goes here</li>
+      <ul id="items-container">
+        <div class="item-list" id="item-list">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="delete"
+            id="delete-item"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
+
+          <li class="px-2">Added items goes here</li>
         </div>
       </ul>
     </div>
+
+    <script src="/app.js"></script>
   </body>
 </html>
