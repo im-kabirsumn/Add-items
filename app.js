@@ -5,7 +5,7 @@ const itemList = document.getElementById("item-list");              // you'll cr
 const deleteItem = document.getElementById("delete-item");          // add an event listener for click event to delete the entire items element
 
 
-const items = JSON.parse(localStorage.getItem('item')) || [];
+const items = JSON.parse(localStorage.getItem('word')) || [];
 
 inputItemsForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -23,5 +23,5 @@ inputItemsForm.addEventListener('submit', (e) => {
   };
 
   items.push(item);
-  localStorage.setItem("item", JSON.stringify(items));
+  localStorage.setItem("word", JSON.stringify(items));
 });
