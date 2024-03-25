@@ -4,7 +4,7 @@
 
 @layer components {
   .input-items {
-    @apply w-[100%] p-3 outline-none rounded-md text-slate-600 text-xl font-semibold focus:caret-cyan-600 focus:text-slate-600 placeholder:text-slate-600 placeholder:focus:text-slate-600;
+    @apply w-[100%] p-3 outline-none rounded-md text-slate-600 text-xl font-semibold focus:caret-cyan-600;
   }
   .item-list {
     @apply my-2 py-3 px-4 bg-teal-300 w-[400px] text-slate-700 text-pretty rounded-md text-lg font-normal relative;

@@ -22,6 +22,7 @@
           id="input-items"
           name="input-items"
           placeholder="Input Items..."
+          autocomplete="off"
           class="input-items"
         />
         <button
@@ -31,29 +32,8 @@
           Add
         </button>
       </form>
-      <ul id="items-container">
-        <div class="item-list" id="item-list">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="delete"
-            id="delete-item"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M6 18 18 6M6 6l12 12"
-            />
-          </svg>
-
-          <li class="px-2">Added items goes here</li>
-        </div>
-      </ul>
+      <ul id="items-container"></ul>
     </div>
-
-    <script src="/app.js"></script>
   </body>
+  <script src="/app.js"></script>
 </html>
