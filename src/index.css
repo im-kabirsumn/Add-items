@@ -12,11 +12,15 @@
   .item-list li {
     @apply break-all;
   }
-  .delete {
+  .delete-icon {
     @apply w-5 inline-block absolute right-1 top-[6px] border border-teal-300 rounded-full duration-200;
   }
-  .delete:hover {
+  .delete-icon:hover {
     @apply bg-teal-500  border-teal-500 cursor-pointer;
+  }
+
+  .delete {
+    @apply hidden;
   }
   .strike {
     @apply line-through;

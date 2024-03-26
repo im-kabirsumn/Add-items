@@ -537,14 +537,6 @@ video {
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
-.input-items:-webkit-autofill {
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 240 138 / var(--tw-bg-opacity));
-}
-.input-items:autofill {
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 240 138 / var(--tw-bg-opacity));
-}
 .input-items:focus {
   caret-color: #0891b2;
 }
@@ -570,7 +562,7 @@ video {
 .item-list li {
   word-break: break-all;
 }
-.delete {
+.delete-icon {
   position: absolute;
   right: 0.25rem;
   top: 6px;
@@ -582,12 +574,15 @@ video {
   border-color: rgb(94 234 212 / var(--tw-border-opacity));
   transition-duration: 200ms;
 }
-.delete:hover {
+.delete-icon:hover {
   cursor: pointer;
   --tw-border-opacity: 1;
   border-color: rgb(20 184 166 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
   background-color: rgb(20 184 166 / var(--tw-bg-opacity));
+}
+.delete {
+  display: none;
 }
 .strike {
   text-decoration-line: line-through;

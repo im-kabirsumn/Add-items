@@ -1,27 +1,15 @@
 const inputItemsForm = document.getElementById("input-items-form"); // add an event listener for submit event to get submitted data 
 const inputItems = document.getElementById("input-items");          // get it's value and push to local storage 
 const itemsContainer = document.getElementById("items-container");                     // you'll inject the item-list element to this
-const itemList = document.createElement("div");              // you'll craft this element and inject it to the itemsContainer element. also you'll add two event listener for click event to Strikethrough this item after one click (just add strike class) and delete this item after double click on this item.
-const deleteItemElm = document.getElementById("delete-item");          // add an event listener for click event to delete the entire items element
+// const itemList = document.createElement("div");              // you'll craft this element and inject it to the itemsContainer element. also you'll add two event listener for click event to Strikethrough this item after one click (just add strike class) and delete this item after double click on this item.
+
 
 
 const items = JSON.parse(localStorage.getItem('items')) || [];
 
 items.map((item) => {
   createElement(item);
-
-  itemList.addEventListener("click", (e) => {
-    e.preventDefault();
-    if (item.isComplete) {
-      deleteItem();
-
-    } else {
-      item.isComplete = true;
-      itemList.classList.add("strike");
-    }
-  });
 });
-
 inputItemsForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
@@ -44,10 +32,7 @@ inputItemsForm.addEventListener('submit', (e) => {
   reset();
 });
 
-deleteItemElm.addEventListener("click", (e) => {
-  e.preventDefault();
-  deleteItem();
-});
+
 
 function createElement(item) {
   const markup = `
@@ -57,7 +42,7 @@ function createElement(item) {
   viewBox="0 0 24 24"
   stroke-width="1.5"
   stroke="currentColor"
-  class="delete"
+  class="delete-icon"
   id="delete-item"
 >
   <path
@@ -70,19 +55,18 @@ function createElement(item) {
   const liElm = document.createElement("li");
   liElm.classList.add("px-2");
   liElm.textContent = item.name;
-
+  const itemList = document.createElement("div");
   itemList.classList.add("item-list");
   itemList.innerHTML = markup;
   itemList.append(liElm);
   itemsContainer.append(itemList);
 
-  return itemList;
 };
 
-function deleteItem() {
-  itemList.style.display = "none";
-}
 
-const reset = () => {
+function reset() {
   inputItems.value = '';
 };
+
+
+console.log(itemsContainer.childNodes);
