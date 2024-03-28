@@ -29,7 +29,7 @@ inputItemsForm.addEventListener('submit', (e) => {
   localStorage.setItem("items", JSON.stringify(items));
 
   createElement(item);
-  reset();
+  inputItemsForm.reset();
 });
 
 
@@ -63,10 +63,15 @@ function createElement(item) {
 
 };
 
+itemsContainer.addEventListener("click", removeElement);
 
-function reset() {
-  inputItems.value = '';
-};
+function removeElement(e) {
+  e.preventDefault();
+
+  if (e.target.classList.contains("delete-icon")) {
+    e.target.parentElement.remove();
+  }
+}
 
 
-console.log(itemsContainer.childNodes);
+
