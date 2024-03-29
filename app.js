@@ -32,45 +32,25 @@ inputItemsForm.addEventListener('submit', (e) => {
   inputItemsForm.reset();
 });
 
-
-
 function createElement(item) {
-  const markup = `
-  <svg
-  xmlns="http://www.w3.org/2000/svg"
-  fill="none"
-  viewBox="0 0 24 24"
-  stroke-width="1.5"
-  stroke="currentColor"
-  class="delete-icon"
-  id="delete-item"
->
-  <path
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    d="M6 18 18 6M6 6l12 12"
-  />
-</svg>
-  `;
-  const liElm = document.createElement("li");
-  liElm.classList.add("px-2");
-  liElm.textContent = item.name;
-  const itemList = document.createElement("div");
-  itemList.classList.add("item-list");
-  itemList.innerHTML = markup;
-  itemList.append(liElm);
-  itemsContainer.append(itemList);
+  const li = document.createElement("li");
+  li.textContent = item.name;
+  li.appendChild(createButton("delete-icon"));
+  li.className = "item-list";
+  itemsContainer.append(li);
+}
 
-};
+function createButton(classes) {
+  const button = document.createElement("button");
+  button.className = classes;
+  button.append(createIcon("fa-solid fa-xmark"));
+  return button;
+}
 
-itemsContainer.addEventListener("click", removeElement);
-
-function removeElement(e) {
-  e.preventDefault();
-
-  if (e.target.classList.contains("delete-icon")) {
-    e.target.parentElement.remove();
-  }
+function createIcon(classes) {
+  const icon = document.createElement("i");
+  icon.className = classes;
+  return icon;
 }
 
 

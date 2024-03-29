@@ -567,11 +567,13 @@ video {
   right: 0.25rem;
   top: 6px;
   display: inline-block;
-  width: 1.25rem;
+  cursor: pointer;
   border-radius: 9999px;
-  border-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: rgb(94 234 212 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(20 184 166 / var(--tw-bg-opacity));
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  text-align: center;
   transition-duration: 200ms;
 }
 .delete-icon:hover {
