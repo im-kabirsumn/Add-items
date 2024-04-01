@@ -17,7 +17,7 @@
   }
 
   .delete-icon {
-    @apply inline-block absolute right-1 top-[6px] border-2 border-teal-300 rounded-full duration-200;
+    @apply w-5 inline-block absolute right-1 top-[6px] border-2 border-teal-300 rounded-full duration-200;
   }
   .delete-icon:hover {
     @apply bg-teal-500  border-teal-500 cursor-pointer;
