@@ -24,6 +24,6 @@
   }
 
   .strike {
-    @apply line-through;
+    @apply line-through my-2 py-3 px-4 bg-teal-300 w-[400px] text-slate-700 text-pretty rounded-md text-lg font-normal relative;
   }
 }

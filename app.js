@@ -4,19 +4,30 @@ const itemsContainer = document.getElementById("items-container");              
 // const itemList = document.createElement("div");              // you'll craft this element and inject it to the itemsContainer element. also you'll add two event listener for click event to Strikethrough this item after one click (just add strike class) and delete this item after double click on this item.
 
 
-const items = JSON.parse(localStorage.getItem("item")) || [];
-
+const localStorageItems = JSON.parse(localStorage.getItem("items")) || [];
+localStorageItems.map((item) => {
+  createElement(item);
+});
 
 // Event Listeners
 inputItemsForm.addEventListener("submit", addItem);
 itemsContainer.addEventListener("click", deleteItem);
+itemsContainer.addEventListener("click", completeItem);
 
 function addItem(e) {
   e.preventDefault();
 
   let inputValue = inputItems.value;
 
-  createElement(inputValue);
+  const item = {
+    id: new Date().getTime(),
+    name: inputValue,
+    isComplete: false
+  };
+
+  localStorageItems.push(item);
+  localStorage.setItem("items", JSON.stringify(localStorageItems));
+  createElement(item);
 
   inputItemsForm.reset();
 }
@@ -31,6 +42,25 @@ function deleteItem(e) {
     if (e.target.nodeName === "path") {
       e.target.parentElement.parentElement.remove();
     }
+
+  }
+}
+
+function completeItem(e) {
+  e.preventDefault();
+
+  let target = e.target;
+  let id = target.getAttribute("id");
+
+  if (target.classList.contains("item-list")) {
+    localStorageItems.map((item) => {
+      if (Number(id) === item.id) {
+        item.isComplete = true;
+        target.className = "strike";
+        localStorage.removeItem(item);
+      }
+
+    });
   }
 }
 
@@ -57,8 +87,9 @@ function createLi(item) {
     class="delete-icon"
   />
 </svg>`;
-  li.appendChild(document.createTextNode(item));
-  li.className = "item-list";
+  li.appendChild(document.createTextNode(item.name));
+  item.isComplete ? li.className = "strike" : li.className = "item-list";
+  li.setAttribute("id", `${item.id}`);
   return li;
 }
 
