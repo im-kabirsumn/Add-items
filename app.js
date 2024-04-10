@@ -1,22 +1,23 @@
-const inputItemsForm = document.getElementById("input-items-form"); // add an event listener for submit event to get submitted data 
-const inputItems = document.getElementById("input-items");          // get it's value and push to local storage 
-const itemsContainer = document.getElementById("items-container");                     // you'll inject the item-list element to this
-// const itemList = document.createElement("div");              // you'll craft this element and inject it to the itemsContainer element. also you'll add two event listener for click event to Strikethrough this item after one click (just add strike class) and delete this item after double click on this item.
+"use strict";
+
+const inputItemsForm = document.getElementById("input-items-form");
+const inputItems = document.getElementById("input-items");
+const itemsContainer = document.getElementById("items-container");
+const addItem = document.getElementById("add-item");
 
 
-const localStorageItems = JSON.parse(localStorage.getItem("items")) || [];
-localStorageItems.map((item) => {
-  createElement(item);
-});
+
 
 // Event Listeners
-inputItemsForm.addEventListener("submit", addItem);
+inputItemsForm.addEventListener("submit", onSubmit);
+addItem.addEventListener("click", onSubmit);
+document.addEventListener("DOMContentLoaded", displayLocalStorage);
 itemsContainer.addEventListener("click", deleteItem);
 itemsContainer.addEventListener("click", completeItem);
 
-function addItem(e) {
+// onSubmit & it's allies
+function onSubmit(e) {
   e.preventDefault();
-
   let inputValue = inputItems.value;
 
   const item = {
@@ -25,11 +26,34 @@ function addItem(e) {
     isComplete: false
   };
 
-  localStorageItems.push(item);
-  localStorage.setItem("items", JSON.stringify(localStorageItems));
-  createElement(item);
+  addItemToLocalStorage(item);
+  addItemToDisplay(item);
 
   inputItemsForm.reset();
+
+}
+
+// onSubmit has two function calls. addItemToLocalStorage is one of them
+function addItemToLocalStorage(item) {
+  const items = createLocalStorageItem(); // Find it in Utility functions
+  items.push(item);
+  localStorage.setItem("localStorageItem", JSON.stringify(items));
+}
+
+// onSubmit has two function calls. addItemToDisplay is one of them & onSubmit end here
+function addItemToDisplay(item) {
+  const li = createLi(item); // Find it in Utility functions
+  itemsContainer.appendChild(li);
+}
+
+// Show Local Storage items added before on initial load
+function displayLocalStorage() {
+  const localStorageItems = createLocalStorageItem();
+
+  localStorageItems.map((item) => {
+    addItemToDisplay(item);
+  });
+
 }
 
 function deleteItem(e) {
@@ -64,11 +88,12 @@ function completeItem(e) {
   }
 }
 
-function createElement(item) {
-  const li = createLi(item);
-  itemsContainer.appendChild(li);
-}
 
+// Utility functions 
+function createLocalStorageItem() {
+  const items = JSON.parse(localStorage.getItem("localStorageItem")) || [];
+  return items;
+}
 
 function createLi(item) {
   const li = document.createElement("li");
@@ -92,6 +117,3 @@ function createLi(item) {
   li.setAttribute("id", `${item.id}`);
   return li;
 }
-
-
-
